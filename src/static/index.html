@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Todoify</title>
+  <link rel="stylesheets" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css" type="text/css">
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700&amp;subset=cyrillic" type="text/css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/material-design-lite/1.2.1/material.min.js"></script>
+  <script src="handlebars-v4.0.5.js"></script>
+</head>
+<body>
+  <section class="todo-app">
+    <header class="todo-app__header">
+      <h1 class="todo-app__title">todoify</h1>
+      <form class="todo-form">
+        <div class="todo-form__elements-wrapper">
+          <input class="todo-form__input" name="title" id="title" autocomplete="off" autofocus required="">
+          <label class="todo-form__label" for="title">Todo title...</label>
+          <textarea rows="3" class="todo-form__input" name="text" autocomplete="off" id="text" required=""></textarea>
+          <label class="todo-form__label" for="text">Todo text...</label>
+          <div class="todo-form__editing-bg"></div>
+          <div class="todo-form__tag-container"></div>
+          <button class="todo-form__add-btn" type="submit">Add todo</button>
+        </div>
+      </form>
+    </header>
+    <section class="todo-app__list">
+    </section>
+    <footer class="todo-app__counter">
+      <h2>Be the person you want to be</h2>
+    </footer>
+    <div class="skrepysh">
+      <p class="skrepysh__says"><span class="hey">Привет! Меня зовут SKREPYSH и я помогу тебе по достоинству оценить это ТУДУ приложение…<br><br>
+      Если у тебя возник неприятный флэшбек из 2000-ых, то просто кликни по мне и я исчезну</span></p>
+      <img src="skrepysh.png" height="100px" width="100px"/>
+    </div>
+  </section>
+  <script src="skrepysh.js"></script>
+  <script id="todo-template" type="text/x-handlebars-template">
+    <div class="todo-item" id="{{id}}">
+      <div class="todo-item__title">{{title}}</div>
+      <div class="todo-item__text">{{text}}</div>
+      <div class="tag-container">
+          {{#each tags}}
+            <span class="tag mdl-chip--deletable">
+              <span class="tag__text">{{this}}</span>
+            </span>
+          {{/each}}
+      </div>
+      <div class="mdl-spinner mdl-js-spinner is-active"></div>
+      <div class="todo-item__remove-todo-wrapper">
+        <svg class="todo-app__remove-todo" fill="#B71C1C" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+          <path d="M0 0h24v24H0z" fill="none"/>
+        </svg>
+      </div>
+      <div class="todo-item__edit-todo-wrapper">
+        <i class="material-icons">create</i>
+      </div>
+    </div>
+  </script>
+  <script src="bundle.js"></script>
+</body>
+</html>
